@@ -1,12 +1,9 @@
-const { readConsole } = require("./readConsole.js");
-const { writeAndRead } = require("./writeAndReadObject.js");
+const { readConsoleThen } = require("./readConsole.js");
+// const { writeAndReadThen } = require("./writeAndReadObject.js");
 
+// const { readConsoleAsync } = require("./readConsole.js");
+const { writeAndReadAsync } = require("./writeAndReadObject.js");
 
-// const callAllFunction = (path, obj, callback) => {
-//     readConsole(callback);
-//     writeAndRead(path, obj);
-// }
+// writeAndReadAsync("./persona.json", "hola") 
 
-// callAllFunction("persona.json", {}, console.log); hola
-
-readConsole(function (persona) { writeAndRead("./persona.json", persona) });
+readConsoleThen((persona) => writeAndReadAsync("./persona.json", persona) );

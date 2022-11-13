@@ -4,18 +4,17 @@ const persona = {
     "surname": "Pop",
     "age": 30,
 }
-// Lo primero es importar el modulo de promises.
+
 let fs = require("fs/promises");
 
-// guardamos el objeto JSON en formato string.
-fs.writeFile("./node2.json", JSON.stringify(persona))
+
+fs.writeFile("./node_promise.json", JSON.stringify(persona))
 
     .then(() => {
-        return fs.readFile("./node2.json", "utf-8")
-        console.log(JSON.parse(persona));
+        return fs.readFile("./node_promise.json", "utf-8")
     })
-    .then(data => {
-        console.log(JSON.parse(data))
+    .then(persona => {
+        console.log(JSON.parse(persona))
     })
     .catch(err => {
         console.log(err);

@@ -5,33 +5,13 @@ const persona = {
 }
 
 let readline = require('readline');
-let fs = require("fs/promise");
-
-// rl.question('What is your name? ', (name) => {
-//     console.log(`Oh, so your name is ${name}`)
-//     persona.name = name;
-//     rl.question('What is your surname? ', (surname) => {
-//         console.log(`Oh, so your surname is ${surname}`)
-//         persona.surname = surname;
-//         rl.question('What is your age? ', (age) => {
-//             console.log(`Oh, so your age is ${age}`)
-//             persona.age = age;
-//             rl.close();
-//             fs.writeFile("./node3.json", JSON.stringify(persona), (error) => {
-//                 fs.readFile("./node3.json", "utf-8", (error, persona) => {
-//                     console.log(JSON.parse(persona));
-//                 })
-//             })
-//         })
-//     })
-// });
-
-const pregunta = (pregunta) => {
+let fs = require("fs/promises");
+// creo una funcion llamada question con el parametro ppregunta
+const question = (pregunta) => {
+    // crear una variable en la que almaceno una promesa con el constructor de la clase promesas (new Promise)
     const question = new Promise((resolve, reject) => {
-        let rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
+        let rl = readline.createInterface(
+            process.stdin, process.stdout);
         rl.question(pregunta, (respuesta) => {
             resolve(respuesta);
             rl.close();
@@ -40,26 +20,26 @@ const pregunta = (pregunta) => {
     return question;
 }
 
-pregunta('What is your name?')
+question('What is your name?')
     .then((name) => {
         persona.name = name;
         //console.log(`Oh, so your name is ${name}`)
-        return pregunta('What is your name?')
+        return question('What is your surname?')
     })
-    .then((username) => {
-        persona.username = username;
+    .then((surname) => {
+        persona.surname = surname;
         //console.log(`Oh, so your surname is ${surname}`)
-        return pregunta('What is your username?')
+        return question('What is your age?')
     })
 
     .then((age) => {
-       persona.age = age;
+        persona.age = age;
         //console.log(`Oh, so your age is ${age}`)
-        return fs.writeFile("./node3.json", JSON.stringify(persona))
+        return fs.writeFile("./node3_promesas.json", JSON.stringify(persona))
     })
 
     .then(() => {
-        return fs.readFile("./node3.json","utf-8")
+        return fs.readFile("./node3_promesas.json", "utf-8")
     })
     .then((data) => {
         console.log(JSON.parse(data))
