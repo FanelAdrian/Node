@@ -47,7 +47,7 @@ const readConsoleThen = (callback) => {
 
 // readConsoleThen(console.log) 
 //try y escribo toda la logica a ejecurar, y el catch sirve en caso de haber un error.
-const readConsoleAsync = async (callback) => {
+const readConsoleAsync = async () => {
     try {
         let persona = {};
         let questionName = await question('What is your name?')
@@ -56,7 +56,7 @@ const readConsoleAsync = async (callback) => {
         persona.surname = questionSurname;
         let questionAge = await question('What is your age?')
         persona.age = questionAge;
-        await callback(persona);
+        return persona;
     } catch (err) {
         console.log(err);
     }

@@ -32,4 +32,4 @@ const  writeAndReadAsync = async(path, obj) => {
 
 // writeAndReadAsync("./miFichero.json", {calle: "Teruel", numero: 8});
 
-module.exports = { writeAndReadAsync };
+module.exports = {writeAndReadThen, writeAndReadAsync };
