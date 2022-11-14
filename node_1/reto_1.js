@@ -5,8 +5,6 @@ app.get("/", function (request, response) {
     console.log(request.method);
     console.log(request.headers["user-agent"]);
     response.status(200).json({ ok: true, message: "Recibido!" });
-    response.send("hello from express server!");
-    
 })
 
 
