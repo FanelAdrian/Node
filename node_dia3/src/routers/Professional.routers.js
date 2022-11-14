@@ -1,6 +1,7 @@
-const {Router} = require ("express")
+const {Router} = require ("express");
 const router = Router();
-const usersCtrl = require("../controller/Professional.controller")
+const usersCtrl = require("../controller/Professional.controller");
+
 router.get("/", usersCtrl.getStart);
 router.get("/professional", usersCtrl.getProfessional);
 router.get("/professional/:id", usersCtrl.getProfessional);
