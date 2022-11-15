@@ -4,7 +4,7 @@ const profesionalRouters = require("./routers/Professional.routers")
 const errorHandLing = require('./error/errorHandling')
 const app = express();
 
-app.set("port", process.env.PORT || 3000)
+app.set("port", process.env.PORT || 3500)
 
 app.use(cors());
 app.use(express.urlencoded({extended: false}));
@@ -18,6 +18,7 @@ app.use(function(req, res, next){
 
 app.use(errorHandLing);
 
+app.listen(3500);
 
 
 module.exports = app;

@@ -1,6 +1,7 @@
+const { request } = require("../../../node_2/src/app");
 const { Professional } = require("../Professional");
 
-let professional = [];
+let professionals = [];
 //{nombre:"Jose", apellidos:"Garcia Garcia}
 
 function getStart(request, response) {
@@ -8,16 +9,24 @@ function getStart(request, response) {
     response.send(respuesta);
 }
 
-function getProfessional(Request, response) {
+
+function getProfessionals(request, response) {
+    let posicion = request.query.pos
     let respuesta;
-    if (professional != null)
-        respuesta = professional;
-    else
-        respuesta = {
-            error: true,
-            codigo: 200,
-            mensaje: "el profesional no existe"
+    if (posicion === undefined) {
+        respuesta = professionals;
+    } else {
+        try {
+            let profesionalPos = professionals[parseInt(posicion)]
+            respuesta = profesionalPos;
+        } catch (error) {
+            respuesta = {
+                error: true,
+                codigo: 200,
+                mensaje: "el profesional no existe"
+            }
         }
+    }
 
     response.send(respuesta);
 }
@@ -25,22 +34,26 @@ function getProfessional(Request, response) {
 function postProfessional(request, response) {
     let respuesta;
     console.log(request.body);
-    if (profesional === null) {
-        profesional = new Professional(
+    let exist = professionals.find((professional) =>
+        professional.name === request.body.name)
+    if (exist === undefined) {
+        let professional = new Professional(
             request.body.name,
             request.body.age,
             request.body.weight,
             request.body.height,)
+        professionals.push(professional);
         respuesta = {
             error: false,
             codigo: 200,
             mensaje: "Profesional Creado",
-            resultado: profesional
+            resultado: professional
+
         };
     } else respuesta = {
         error: true,
         codigo: 200,
-        mensaje: "Profesional ya existe",
+        mensaje: "Profesional ya existente",
         resultado: null
     };
 
@@ -48,49 +61,56 @@ function postProfessional(request, response) {
 
 }
 
-
-
 function putProfessional(request, response) {
-    let respuesta
-    if (profesional != null) {
-        profesional.name = request.body.name;
-        profesional.age = request.body.age;
-        profesional.weight = request.body.weight;
-        profesional.height = request.body.height
+    // creo una variable en la que almaceno el valor del parametro pos de la request
+    let posicion = request.query.pos
+    let respuesta;
+    try {
+        let professionalPos = professionals[parseInt(posicion)];
+        professionalPos.name = request.body.name;
+        professionalPos.age = request.body.age;
+        professionalPos.weight = request.body.weight;
+        professionalPos.height = request.body.height
         respuesta = {
             error: false,
             codigo: 200,
             mensaje: "Professional actualizado",
-            resultado: profesional
-        };
-    } else respuesta = {
-        error: true,
-        codigo: 200,
-        mensaje: "El professional no exixte",
-        resultado: profesional
-    };
-
-    response.send(respuesta);
-}
-
-function deleteProfessional(request, response) {
-    let respuesta
-    if (profesional != null) {
-        profesional = null;
-        respuesta = {
-            error: false,
-            codigo: 200,
-            mensaje: "El professional no existe",
-            resultado: profesional
+            resultado: professionalPos
         }
-    } else respuesta = {
-        error: true,
-        codigo: 200,
-        mensaje: "El professional no existe",
-        resultado: profesional
+    } catch (error) {
+        respuesta = {
+            error: true,
+            codigo: 200,
+            mensaje: "El professional no exixte",
+            resultado: null
+        }
     }
 
     response.send(respuesta);
 }
 
-module.exports = { getStart, getProfessional, postProfessional, putProfessional, deleteProfessional };
+function deleteProfessional(request, response) {
+    let posicion = request.query.pos
+    let respuesta;
+    try {
+        let professionalPos = professionals[parseInt(posicion)];
+        professionals.splice(parseInt(posicion), 1)
+        respuesta = {
+            error: false,
+            codigo: 200,
+            mensaje: "El professional se ha eliminado",
+            resultado: professionals
+        }
+    } catch (error) {
+        respuesta = {
+            error: true,
+            codigo: 200,
+            mensaje: "El professional no existe",
+            resultado: null
+        }
+    }
+
+    response.send(respuesta);
+}
+
+module.exports = { getStart, getProfessionals, postProfessional, putProfessional, deleteProfessional };
