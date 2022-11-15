@@ -1,7 +1,8 @@
 const express = require("express")
 const cors = require("cors")
 const profesionalRouters = require("./routers/Professional.routers")
-const errorHandLing = require('./error/errorHandling')
+const errorHandLing = require('./error/errorHandling');
+const { callbackify } = require("util");
 const app = express();
 
 app.set("port", process.env.PORT || 3000)
@@ -18,6 +19,6 @@ app.use(function(req, res, next){
 
 app.use(errorHandLing);
 
-
+app.listen(3000);
 
 module.exports = app;

@@ -25,8 +25,8 @@ function getProfessional(Request, response) {
 function postProfessional(request, response) {
     let respuesta;
     console.log(request.body);
-    if (profesional === null) {
-        profesional = new Professional(
+    if (professional === null) {
+        professional = new Professional(
             request.body.name,
             request.body.age,
             request.body.weight,
@@ -35,7 +35,7 @@ function postProfessional(request, response) {
             error: false,
             codigo: 200,
             mensaje: "Profesional Creado",
-            resultado: profesional
+            resultado: professional
         };
     } else respuesta = {
         error: true,
@@ -52,22 +52,22 @@ function postProfessional(request, response) {
 
 function putProfessional(request, response) {
     let respuesta
-    if (profesional != null) {
-        profesional.name = request.body.name;
-        profesional.age = request.body.age;
-        profesional.weight = request.body.weight;
-        profesional.height = request.body.height
+    if (professional != null) {
+        professional.name = request.body.name;
+        professional.age = request.body.age;
+        professional.weight = request.body.weight;
+        professional.height = request.body.height
         respuesta = {
             error: false,
             codigo: 200,
-            mensaje: "Professional actualizado",
-            resultado: profesional
+            mensaje: "Profesional actualizado",
+            resultado: professional
         };
     } else respuesta = {
         error: true,
         codigo: 200,
-        mensaje: "El professional no exixte",
-        resultado: profesional
+        mensaje: "El profesional no exixte",
+        resultado: professional
     };
 
     response.send(respuesta);
@@ -75,19 +75,19 @@ function putProfessional(request, response) {
 
 function deleteProfessional(request, response) {
     let respuesta
-    if (profesional != null) {
-        profesional = null;
+    if (professional != null) {
+        professional = null;
         respuesta = {
             error: false,
             codigo: 200,
-            mensaje: "El professional no existe",
-            resultado: profesional
+            mensaje: "El profesional no existe",
+            resultado: professional
         }
     } else respuesta = {
         error: true,
         codigo: 200,
-        mensaje: "El professional no existe",
-        resultado: profesional
+        mensaje: "El profesional no existe",
+        resultado: professional
     }
 
     response.send(respuesta);
