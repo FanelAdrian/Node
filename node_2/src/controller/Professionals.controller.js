@@ -47,7 +47,7 @@ function postProfessional(request, response) {
             request.body.name,
             request.body.age,
             request.body.weight,
-            request.body.height,)
+            request.body.heigth,)
         professionals.push(professional);
         respuesta = {
             error: false,
@@ -74,7 +74,7 @@ function putProfessional(request, response) {
         request.body.name,
         request.body.age,
         request.body.weight,
-        request.body.height);
+        request.body.heigth);
 
     console.log(request.body);
     if (newProfessional[posicion] !== null) {

@@ -29,7 +29,7 @@ function postProfessional(request, response) {
         professional = new Professional(
             request.body.name,
             request.body.age,
-            request.body.weight,
+            request.body.weigth,
             request.body.height,)
         respuesta = {
             error: false,
