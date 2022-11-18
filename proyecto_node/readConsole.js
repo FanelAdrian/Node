@@ -18,6 +18,10 @@ const readConsole = (callback) => {
 }
 
 
+<<<<<<< HEAD
 // readConsole(console.log) 
+=======
+readConsole(console.log) 
+>>>>>>> dia3
 
 module.exports = { readConsole };

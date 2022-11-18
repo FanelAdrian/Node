@@ -11,7 +11,11 @@ let fs = require("fs");
 let rl = readline.createInterface(
     process.stdin, process.stdout);
 
+<<<<<<< HEAD
 rl.question('What is your name? ', (name) => {
+=======
+rl.question('What is your name?', (name) => {
+>>>>>>> dia3
     console.log(`Oh, so your name is ${name}`)
     persona.name = name;
     rl.question('What is your surname? ', (surname) => {

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Professional</title>
+
+</head>
+
+<body class="container">
+    <main class="main__body">
+        <header class="header__prof">
+            <h1 class="tittle">Proffesionals</h1>
+        </header>
+        <div class="professional__body">
+            <div class="professional_container__form">
+                <h2 class="header__form">Create Profesional</h2>
+                <form action="" class="professional__form">
+                    <div class="professional__form__camp">
+                        <div class="inputbox">
+                            <input type="text" id="inpID">
+                            <span>ID</span>
+                            <i></i>
+                        </div>
+                        <div class="inputbox">
+                            <input  type="text" id="inpName">
+                            <span>Name</span>
+                            <i></i>
+                        </div>
+                        <div class="inputbox">
+                            <input  type="text" id="inpAge">
+                            <span>Age</span>
+                            <i></i>
+                        </div>
+                        <div class="inputbox">
+                            <input  type="text" id="inpWeight">
+                            <span>Weight</span>
+                            <i></i>
+                        </div>
+                        <div class="inputbox">
+                            <input  type="text" id="inpHeigth">
+                            <span>Heigth</span>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="professional__form__buttons">
+                        <button class="button__mostrar" type="button" onclick="mostrarProfessionals()">MOSTRAR</button>
+                        <button class="button__crear" type="button" onclick="crearProfessionals()">CREAR</button>
+                        <button class="button__actualizar" type="button" onclick="editarProfessionals()">ACTUALIZAR</button>
+                        <button class="button__eliminar" type="button" onclick="eliminarProfessionals()">ELIMINAR</button>
+                </form>
+            </div>
+        </div>
+        <div class="container box__cards" id="container">
+
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
